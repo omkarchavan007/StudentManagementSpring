@@ -9,7 +9,9 @@ public interface StudentService {
     // Services or methods that we are going to provide
     public String saveStudents(Students students);
 
+    //Add List of Students at once
     public List<Students> SaveallStudents(List<Students> students);
 
-
+    //Get student by id
+    public Students getByID(int id);
 }
