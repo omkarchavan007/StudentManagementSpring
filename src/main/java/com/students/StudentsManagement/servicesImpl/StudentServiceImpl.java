@@ -30,11 +30,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Students getByID(int  id) {
-
        Optional<Students> students = studentRepo.findById(id);
-
-        return students.orElseThrow( () -> new NoSuchElementException("Student with " +id + "Not Found"));
+        return students.orElse(null);
     }
-
-
 }
