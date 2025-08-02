@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/students")
 public class StudentsController {
@@ -24,7 +26,14 @@ public class StudentsController {
     @PostMapping("/AddStudent")
     public ResponseEntity<String> addStudent(@RequestBody Students students) {
         studentService.saveStudents(students);
-        return new ResponseEntity<>("Student data Saved ", HttpStatus.OK);
+        return new ResponseEntity<>("Student data Saved ", HttpStatus.CREATED);
+    }
+
+    @PostMapping("/addAllStudents")
+    public ResponseEntity<List<Students>> addAllStudents(@RequestBody List<Students> students){
+
+       List<Students>  students1= studentService.SaveallStudents(students);
+        return new ResponseEntity<>(students1 , HttpStatus.CREATED);
     }
 
 }
