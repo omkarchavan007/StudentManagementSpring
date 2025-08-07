@@ -54,4 +54,12 @@ public class StudentsController {
         return new ResponseEntity<>(students1, HttpStatus.CREATED);
     }
 
+    // Delete Student By id
+    @GetMapping("/deleteById/{id}")
+    public ResponseEntity<String> deleteById(@PathVariable("id") int id)
+    {
+        studentService.deleteByID(id);
+        return new ResponseEntity<>("Student Data deleted" ,HttpStatus.OK);
+    }
+
 }
