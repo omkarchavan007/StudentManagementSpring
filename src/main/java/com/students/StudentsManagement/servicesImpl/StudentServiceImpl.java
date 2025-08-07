@@ -5,6 +5,7 @@ import com.students.StudentsManagement.repository.StudentRepo;
 import com.students.StudentsManagement.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -30,26 +31,33 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Students getByID(int  id) {
-       Optional<Students> students = studentRepo.findById(id);
+    public Students getByID(int id) {
+        Optional<Students> students = studentRepo.findById(id);
         return students.orElse(null);
     }
 
     // get all students data
     @Override
     public List<Students> getAllStudents() {
-    List<Students> studentsList = studentRepo.findAll();
+        List<Students> studentsList = studentRepo.findAll();
         return studentsList;
     }
 
-
-
-
+    // update student by their ID
     @Override
-    public Students updateByID(int id, Students newData) {
+    public Students updateByID(int id, @RequestBody Students newData) {
 
+        Students students = studentRepo.findById(id)
+                .orElseThrow(() -> new NullPointerException("Id : " + id + "not Found "));
 
+        students.setfName(newData.getfName());
+        students.setlName(newData.getlName());
+        students.setCity(newData.getCity());
+        students.setCourse(newData.getCourse());
+        students.setGender(newData.getGender());
+        students.setEnrollmentNo(newData.getEnrollmentNo());
 
-        return null;
+        Students students1 = studentRepo.save(students);
+        return students1;
     }
 }

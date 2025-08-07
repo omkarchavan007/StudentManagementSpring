@@ -45,4 +45,13 @@ public class StudentsController {
         List<Students> studentsList = studentService.getAllStudents();
         return new ResponseEntity<>(studentsList, HttpStatus.OK);
     }
+
+    // Update student by their Id
+    @PutMapping("/updateById/{id}")
+    public ResponseEntity<Students> updateById(@PathVariable("id") int id, @RequestBody Students students)
+    {
+        Students students1 = studentService.updateByID(id, students);
+        return new ResponseEntity<>(students1, HttpStatus.CREATED);
+    }
+
 }
