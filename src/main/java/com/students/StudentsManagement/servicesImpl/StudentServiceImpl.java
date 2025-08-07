@@ -34,6 +34,16 @@ public class StudentServiceImpl implements StudentService {
         return students.orElse(null);
     }
 
+    // get all students data
+    @Override
+    public List<Students> getAllStudents() {
+    List<Students> studentsList = studentRepo.findAll();
+        return studentsList;
+    }
+
+
+
+
     @Override
     public Students updateByID(int id, Students newData) {
 
