@@ -7,6 +7,7 @@ import java.util.List;
 public interface StudentService {
 
     // Services or methods that we are going to provide
+    // Add single student data at once
     public String saveStudents(Students students);
 
     //Add List of Students at once
@@ -14,4 +15,13 @@ public interface StudentService {
 
     //Get student by id
     public Students getByID(int id);
+
+    // Get all Students
+    List<Students> getAllStudents();
+
+    // Update Stuent By ID
+    public Students updateByID(int id , Students newData);
+
+
+
 }

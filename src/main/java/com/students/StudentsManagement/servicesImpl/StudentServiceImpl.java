@@ -33,4 +33,12 @@ public class StudentServiceImpl implements StudentService {
        Optional<Students> students = studentRepo.findById(id);
         return students.orElse(null);
     }
+
+    @Override
+    public Students updateByID(int id, Students newData) {
+
+
+
+        return null;
+    }
 }
