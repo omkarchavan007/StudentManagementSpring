@@ -16,6 +16,7 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private StudentRepo studentRepo;
 
+    //save one student data
     @Override
     public String saveStudents(Students students) {
         Students students1 = studentRepo.save(students);

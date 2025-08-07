@@ -22,7 +22,7 @@ public class StudentsController {
     //Add Data into DB
     @PostMapping("/AddStudent")
     public ResponseEntity<String> addStudent(@RequestBody Students students) {
-        studentService.saveStudents(students);
+         studentService.saveStudents(students);
         return new ResponseEntity<>("Student data Saved ", HttpStatus.CREATED);
     }
 
@@ -39,5 +39,10 @@ public class StudentsController {
         return new ResponseEntity<>(students, HttpStatus.OK);
     }
 
-
+    @GetMapping("/getAllStudents")
+    public ResponseEntity<List<Students>> getAllStudents()
+    {
+        List<Students> studentsList = studentService.getAllStudents();
+        return new ResponseEntity<>(studentsList, HttpStatus.OK);
+    }
 }
