@@ -22,6 +22,8 @@ public interface StudentService {
     // Update Stuent By ID
     public Students updateByID(int id , Students newData);
 
+    // Delete Studednt by their id
+    Students deleteByID(int id);
 
 
 }
