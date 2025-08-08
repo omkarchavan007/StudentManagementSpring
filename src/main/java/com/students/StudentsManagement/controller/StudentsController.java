@@ -61,5 +61,4 @@ public class StudentsController {
         studentService.deleteByID(id);
         return new ResponseEntity<>("Student Data deleted" ,HttpStatus.OK);
     }
-
 }
