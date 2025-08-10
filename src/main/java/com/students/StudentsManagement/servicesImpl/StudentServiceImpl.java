@@ -87,4 +87,12 @@ public class StudentServiceImpl implements StudentService {
 
     }
 
+    //Filter by Any Entity
+    @Override
+    public List<Students> getStudentsByFilters(String fname, String lname, String city, String course, String enrollmentNo) {
+
+        List<Students> studentsList = studentRepo.findAll();
+        return List.of();
+    }
+
 }
