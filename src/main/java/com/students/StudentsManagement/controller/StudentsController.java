@@ -64,7 +64,7 @@ public class StudentsController {
 
     // Filter student by their course
     @GetMapping("/filterByCourse")
-    public ResponseEntity<List<Students>> filteByCourse(@RequestBody(required = false) String course)
+    public ResponseEntity<List<Students>> filterByCourse(@RequestParam(required = false) String course)
     {
        List<Students> studentsList = studentService.filterByCourse(course);
        return new ResponseEntity<>(studentsList, HttpStatus.OK);
