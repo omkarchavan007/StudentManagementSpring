@@ -61,4 +61,12 @@ public class StudentsController {
         studentService.deleteByID(id);
         return new ResponseEntity<>("Student Data deleted" ,HttpStatus.OK);
     }
+
+    // Filter student by their course
+    @GetMapping("/filterByCourse")
+    public ResponseEntity<List<Students>> filteByCourse(@RequestBody(required = false) String course)
+    {
+       List<Students> studentsList = studentService.filterByCourse(course);
+       return new ResponseEntity<>(studentsList, HttpStatus.OK);
+    }
 }
