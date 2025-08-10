@@ -1,6 +1,7 @@
 package com.students.StudentsManagement.servicesImpl;
 
 import com.students.StudentsManagement.entity.Students;
+import com.students.StudentsManagement.exceptionHandeler.ResourceNotFoundException;
 import com.students.StudentsManagement.repository.StudentRepo;
 import com.students.StudentsManagement.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,9 +74,17 @@ public class StudentServiceImpl implements StudentService {
     // Filter Students By their Courses
     @Override
     public List<Students> filterByCourse(String course) {
-       List<Students> filteredStudents =  studentRepo.findAll().stream()
+
+        List<Students> filteredStudents = studentRepo.findAll().stream()
                 .filter((k -> course.equalsIgnoreCase(k.getCourse())))
                 .collect(Collectors.toList());
+
+        if (filteredStudents.isEmpty())
+        {
+            throw new ResourceNotFoundException("No data Found");
+        }
         return filteredStudents;
+
     }
+
 }
