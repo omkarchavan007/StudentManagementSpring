@@ -67,4 +67,11 @@ public class StudentServiceImpl implements StudentService {
         studentRepo.deleteById(id);
         return null;
     }
+
+
+    // Filter Students By their Courses
+    @Override
+    public List<Students> filterByCourse(String course) {
+        return List.of();
+    }
 }

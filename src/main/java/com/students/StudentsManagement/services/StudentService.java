@@ -25,5 +25,10 @@ public interface StudentService {
     // Delete Studednt by their id
     Students deleteByID(int id);
 
+    // filter student by their courses
+    List<Students> filterByCourse(String course);
+
+
+
 
 }
