@@ -28,6 +28,10 @@ public interface StudentService {
     // filter student by their courses
     List<Students> filterByCourse(String course);
 
+    // Filter by any Entity
+    List<Students> getStudentsByFilters(String name, String lastName, String city, String course, String enrollmentNo);
+
+
 
 
 

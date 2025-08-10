@@ -81,7 +81,7 @@ public class StudentServiceImpl implements StudentService {
 
         if (filteredStudents.isEmpty())
         {
-            throw new ResourceNotFoundException("No data Found");
+            throw new ResourceNotFoundException("Students with course : '" + course + "' Not Found ");
         }
         return filteredStudents;
 
