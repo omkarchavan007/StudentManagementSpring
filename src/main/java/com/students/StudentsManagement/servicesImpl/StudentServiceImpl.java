@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -72,6 +73,9 @@ public class StudentServiceImpl implements StudentService {
     // Filter Students By their Courses
     @Override
     public List<Students> filterByCourse(String course) {
-        return List.of();
+       List<Students> filteredStudents =  studentRepo.findAll().stream()
+                .filter((k -> course.equalsIgnoreCase(k.getCourse())))
+                .collect(Collectors.toList());
+        return filteredStudents;
     }
 }
