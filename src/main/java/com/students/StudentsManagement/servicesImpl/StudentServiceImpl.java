@@ -101,6 +101,14 @@ public class StudentServiceImpl implements StudentService {
 
     }
 
+    @Override
+    public List<Students> filterByCity(String city) {
+            List<Students> filteredStudents = studentRepo.findAll().stream()
+                    .filter((k -> city.equalsIgnoreCase(k.getCity())))
+                    .collect(Collectors.toList());
+        return List.of();
+    }
+
     //Filter by Any Entity
 //    @Override
 //    public List<Students> getStudentsByFilters(String fname, String lname, String city, String course, String enrollmentNo) {
