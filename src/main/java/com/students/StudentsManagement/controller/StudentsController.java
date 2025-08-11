@@ -93,4 +93,12 @@ public class StudentsController {
         List<Students> studentsList = studentService.filterByCourse(fName);
         return new ResponseEntity<>(studentsList, HttpStatus.OK);
     }
+
+    // filter by LastName
+    @GetMapping("/filterBylName")
+    public ResponseEntity<List<Students>> filterBylName(@RequestParam(required = false) String lName)
+    {
+        List<Students> studentsList = studentService.filterByCourse(lName);
+        return new ResponseEntity<>(studentsList, HttpStatus.OK);
+    }
 }
