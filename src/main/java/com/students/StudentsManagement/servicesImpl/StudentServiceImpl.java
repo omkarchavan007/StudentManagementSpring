@@ -87,6 +87,7 @@ public class StudentServiceImpl implements StudentService {
 
     }
 
+    // Filter Students By their Gender
     @Override
     public List<Students> filterByGenderg(String gender) {
         List<Students> filteredStudents = studentRepo.findAll().stream()
@@ -101,6 +102,7 @@ public class StudentServiceImpl implements StudentService {
 
     }
 
+    // Filter Students By their City
     @Override
     public List<Students> filterByCity(String city) {
             List<Students> filteredStudents = studentRepo.findAll().stream()
@@ -111,6 +113,16 @@ public class StudentServiceImpl implements StudentService {
         {
             throw new ResourceNotFoundException("Students with gender : '" + city + "' Not Found ");
         }
+        return filteredStudents;
+    }
+
+    // Filter Students By their FirstName
+    @Override
+    public List<Students> filterByFirstName(String fName) {
+        List<Students> filteredStudents = studentRepo.findAll().stream()
+                .filter((k -> fName.equalsIgnoreCase(k.getfName())))
+                .collect(Collectors.toList());
+
         return filteredStudents;
     }
 

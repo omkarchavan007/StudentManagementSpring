@@ -37,6 +37,9 @@ public interface StudentService {
     // filter student by their city
     List<Students> filterByCity(String city);
 
+    // filter student by their FirstName
+    List<Students> filterByFirstName(String fName);
+
 
 
 
