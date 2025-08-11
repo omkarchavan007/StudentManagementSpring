@@ -85,4 +85,12 @@ public class StudentsController {
         List<Students> studentsList = studentService.filterByCourse(city);
         return new ResponseEntity<>(studentsList, HttpStatus.OK);
     }
+
+    // filter by FirstName
+    @GetMapping("/filterByfName")
+    public ResponseEntity<List<Students>> filterByfName(@RequestParam(required = false) String fName)
+    {
+        List<Students> studentsList = studentService.filterByCourse(fName);
+        return new ResponseEntity<>(studentsList, HttpStatus.OK);
+    }
 }
