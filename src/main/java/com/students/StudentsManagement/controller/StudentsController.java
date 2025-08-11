@@ -69,4 +69,12 @@ public class StudentsController {
        List<Students> studentsList = studentService.filterByCourse(course);
        return new ResponseEntity<>(studentsList, HttpStatus.OK);
     }
+
+    // filter by Gender
+    @GetMapping("/filterByCourse")
+    public ResponseEntity<List<Students>> filterByGender(@RequestParam(required = false) String gender)
+    {
+        List<Students> studentsList = studentService.filterByCourse(gender);
+        return new ResponseEntity<>(studentsList, HttpStatus.OK);
+    }
 }
