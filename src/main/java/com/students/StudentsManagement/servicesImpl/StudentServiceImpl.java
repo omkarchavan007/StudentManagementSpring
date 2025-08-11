@@ -123,6 +123,10 @@ public class StudentServiceImpl implements StudentService {
                 .filter((k -> fName.equalsIgnoreCase(k.getfName())))
                 .collect(Collectors.toList());
 
+        if (filteredStudents.isEmpty())
+        {
+            throw new ResourceNotFoundException("Students with gender : '" + fName + "' Not Found ");
+        }
         return filteredStudents;
     }
 
