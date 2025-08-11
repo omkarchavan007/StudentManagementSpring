@@ -130,6 +130,16 @@ public class StudentServiceImpl implements StudentService {
         return filteredStudents;
     }
 
+    @Override
+    public List<Students> filterByLastName(String lName) {
+
+        List<Students> filteredStudents = studentRepo.findAll().stream()
+                .filter((k -> lName.equalsIgnoreCase(k.getlName())))
+                .collect(Collectors.toList());
+
+        return filteredStudents;
+    }
+
     //Filter by Any Entity
 //    @Override
 //    public List<Students> getStudentsByFilters(String fname, String lname, String city, String course, String enrollmentNo) {
