@@ -92,7 +92,13 @@ public class StudentServiceImpl implements StudentService {
         List<Students> filteredStudents = studentRepo.findAll().stream()
                 .filter((k -> gender.equalsIgnoreCase(k.getGender())))
                 .collect(Collectors.toList());
+
+        if (filteredStudents.isEmpty())
+        {
+            throw new ResourceNotFoundException("Students with gender : '" + gender + "' Not Found ");
+        }
         return filteredStudents;
+
     }
 
     //Filter by Any Entity
