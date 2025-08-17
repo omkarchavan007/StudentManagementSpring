@@ -20,11 +20,29 @@ public class StudentsController {
 
 
     //Add Data into DB
-    @PostMapping("/AddStudent")
-    public ResponseEntity<String> addStudent(@RequestBody Students students) {
-         studentService.saveStudents(students);
-        return new ResponseEntity<>("Student data Saved ", HttpStatus.CREATED);
+//    @PostMapping("/AddStudent")
+//    public ResponseEntity<String> addStudent(@RequestBody Students students) {
+//         studentService.saveStudents(students);
+//        return new ResponseEntity<>("Student data Saved ", HttpStatus.CREATED);
+//    }
+
+    // Add Students With Vehicle Mapping
+    // added with vehicle mapping
+    @PostMapping("/addData")
+    public ResponseEntity<String> addStudents(@RequestBody Students Students) {
+
+        // Ensure the bidirectional mapping is set
+        if (Students.getVehicles() != null) {
+            Students.getVehicles().forEach(vehicle -> vehicle.setStudents(Students));
+        }
+
+        System.err.println(Students);
+        studentService.saveStudents(Students);
+
+        return new ResponseEntity<>("Students Data Saved", HttpStatus.CREATED);
     }
+
+
 
     @PostMapping("/addAllStudents")
     public ResponseEntity<List<Students>> addAllStudents(@RequestBody List<Students> students){
