@@ -17,6 +17,7 @@ public class Students {
     private String gender;
 
     @OneToMany(mappedBy = "students", cascade = CascadeType.ALL)
+    private Vehicles vehicles;
 
 
     public int getId() {
