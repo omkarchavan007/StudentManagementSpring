@@ -14,7 +14,7 @@ public class Vehicles {
     private String registrationNumber;
 
     @ManyToOne
-    @JoinColumn(name = "student_id")
+    @JoinColumn(name = "students_id")
     private Students students;
 
 
