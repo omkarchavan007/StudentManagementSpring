@@ -2,6 +2,8 @@ package com.students.StudentsManagement.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Students {
 
@@ -17,14 +19,13 @@ public class Students {
     private String gender;
 
     @OneToMany(mappedBy = "students", cascade = CascadeType.ALL)
-    private Vehicles vehicles;
+    private List<Vehicles> vehicles;
 
-
-    public Vehicles getVehicles() {
+    public List<Vehicles> getVehicles() {
         return vehicles;
     }
 
-    public void setVehicles(Vehicles vehicles) {
+    public void setVehicles(List<Vehicles> vehicles) {
         this.vehicles = vehicles;
     }
 
