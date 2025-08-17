@@ -20,6 +20,14 @@ public class Students {
     private Vehicles vehicles;
 
 
+    public Vehicles getVehicles() {
+        return vehicles;
+    }
+
+    public void setVehicles(Vehicles vehicles) {
+        this.vehicles = vehicles;
+    }
+
     public int getId() {
         return id;
     }
