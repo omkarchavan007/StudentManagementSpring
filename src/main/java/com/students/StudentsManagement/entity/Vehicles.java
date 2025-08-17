@@ -1,9 +1,6 @@
 package com.students.StudentsManagement.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 
@@ -16,7 +13,9 @@ public class Vehicles {
     private String vehicleType;
     private String registrationNumber;
 
-
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private Students students;
 
 
     public Long getVehicleId() {
