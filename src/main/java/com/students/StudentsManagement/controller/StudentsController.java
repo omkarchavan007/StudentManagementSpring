@@ -1,15 +1,17 @@
 package com.students.StudentsManagement.controller;
 
 import com.students.StudentsManagement.entity.Students;
-import com.students.StudentsManagement.repository.StudentRepo;
 import com.students.StudentsManagement.services.StudentService;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 @RestController
 @RequestMapping("/students")
@@ -17,6 +19,10 @@ public class StudentsController {
 
     @Autowired
     private StudentService studentService;
+
+
+    // adding logger
+    private static final Logger logger = (Logger) LoggerFactory.getLogger(StudentsController.class);
 
 
     //Add Data into DB
@@ -27,6 +33,8 @@ public class StudentsController {
 //    }
 
     // Add Students With Vehicle Mapping
+
+
     // added with vehicle mapping
     @PostMapping("/addData")
     public ResponseEntity<String> addStudents(@RequestBody Students Students) {
@@ -61,6 +69,11 @@ public class StudentsController {
     public ResponseEntity<List<Students>> getAllStudents()
     {
         List<Students> studentsList = studentService.getAllStudents();
+
+        logger.info("INFO: /getAllStudents endpoint was called");
+        logger.debug("DEBUG: Detailed debug message");
+        logger.error("ERROR: Just an error example");
+
         return new ResponseEntity<>(studentsList, HttpStatus.OK);
     }
 
